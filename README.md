@@ -35,6 +35,7 @@ This app is is a very simple Telegram PHP API for newly announced [Telegram Bots
   * [Guzzle](http://guzzlephp.org/)
 
 ###TODO
-
+ * SQL support (already working on this). Messages etc. will be fetced from database.
+ * Better search algorithm for provided parameters
  * Sending sticker feature
- * More complex tasks (like fetching data from 3rd party services etc.)
+ * More complex tasks (like fetching data from 3rd party services such as Trakt etc.)
