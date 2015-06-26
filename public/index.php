@@ -6,7 +6,7 @@
  * @package  Telegram-PHP-Example-Bot
  * @version  0.1
  * @author   Arda Kilicdagi <arda@kilicdagi.com>
- * @link     http://arda.pw
+ * @link     https://arda.pw
  */
 
 //Show all errors
@@ -87,7 +87,7 @@ $app->post('/hook/{route}', function ($route, Request $request) use ($app, $conf
         $userInput = trim(str_replace('@' . $bot, "", $responseData['message']['text']));
         
         //If user only says "/" it also triggers the webhook, we don't want to return anything (API bug?)
-        if($userInput == '/') {
+        if(stripos($userInput, '/') !== false && stripos($userInput, $bot) === false) {
             return 'OK';
         }
 
