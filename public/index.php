@@ -85,6 +85,11 @@ $app->post('/hook/{route}', function ($route, Request $request) use ($app, $conf
 
         //The text that user has typed, let's delete the bot name
         $userInput = trim(str_replace('@' . $bot, "", $responseData['message']['text']));
+        
+        //If user only says "/" it also triggers the webhook, we don't want to return anything (API bug?)
+        if($userInput == '/') {
+            return 'OK';
+        }
 
         //Now let's split it by spaces
         $userInputArray = explode(" ", $userInput);
