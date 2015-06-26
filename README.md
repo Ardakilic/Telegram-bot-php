@@ -2,6 +2,8 @@
 
 This app is is a very simple Telegram PHP API for newly announced [Telegram Bots](https://telegram.org/blog/bot-revolution).
 
+![Preview](http://i.imgur.com/gVsY6zB.png)
+
 ###Features
 
  * By installing this app, you can have a working Telegram Bot within minutes!
