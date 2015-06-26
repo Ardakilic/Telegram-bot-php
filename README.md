@@ -1,6 +1,6 @@
 # Telegram-bot-php
 
-This app is is a very simple Telegram PHP API for newly announced [Telegram Bots](https://telegram.org/blog/bot-revolution).
+This app is a very simple Telegram PHP API for newly announced [Telegram Bots](https://telegram.org/blog/bot-revolution).
 
 ![Preview](http://i.imgur.com/gVsY6zB.png)
 
@@ -18,7 +18,7 @@ This app is is a very simple Telegram PHP API for newly announced [Telegram Bots
 ###Requirements
 
  * PHP5.5+ (for Guzzle)
- * An SSL certificate (Telegram API requires this). You can use [Cloudflare's Free Flexilbe SSL](https://www.cloudflare.com/ssl) which crypts the web traffic from end user to their proxies if you're using CloudFlare DNS.
+ * An SSL certificate (Telegram API requires this). You can use [Cloudflare's Free Flexible SSL](https://www.cloudflare.com/ssl) which crypts the web traffic from end user to their proxies if you're using CloudFlare DNS.
  * Telegram API key, you can get one simply with [@BotFather](https://core.telegram.org/bots#botfather) with simple commands right after creating your bot.
 
 ###Installation
@@ -35,7 +35,7 @@ This app is is a very simple Telegram PHP API for newly announced [Telegram Bots
   * [Guzzle](http://guzzlephp.org/)
 
 ###TODO
- * SQL support (already working on this). Messages etc. will be fetced from database.
+ * SQL support (already working on this). Messages etc. will be fetched from database.
  * Better search algorithm for provided parameters
  * Sending sticker feature
  * More complex tasks (like fetching data from 3rd party services such as Trakt etc.)
