@@ -91,17 +91,23 @@ $app->post('/hook/{route}', function ($route, Request $request) use ($app, $conf
             return 'OK';
         }
 
-        //Now let's split it by spaces
-        $userInputArray = explode(" ", $userInput);
 
-        //We will be checking each words one by one, first matched result will base the message
-        foreach ($userInputArray as $input) {
-            if (array_key_exists($input, $botMessages)) {
-                //If there are messages set, fetch a random element
-                $message = $botMessages[$input][array_rand($botMessages[$input], 1)];
-                break;
+        //First, let's check for multiple word occurences
+        if(array_key_exists($userInput, $botMessages)) {
+            $message = $botMessages[$userInput][array_rand($botMessages[$userInput], 1)];
+        } else {
+            //If not found, then let's split it by spaces
+            $userInputArray = explode(" ", $userInput);
+            //We will be checking each words one by one, first matched result will base the message
+            foreach ($userInputArray as $input) {
+                if (array_key_exists($input, $botMessages)) {
+                    //If there are messages set, fetch a random element
+                    $message = $botMessages[$input][array_rand($botMessages[$input], 1)];
+                    break;
+                }
             }
         }
+
     }
 
 
