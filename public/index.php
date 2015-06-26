@@ -113,6 +113,10 @@ $app->post('/hook/{route}', function ($route, Request $request) use ($app, $conf
     	$queryArray['reply_to_message_id'] = (string)$responseData['message']['message_id'];
     }
 
+    if(!$config['preview_links']) {
+        $queryArray['disable_web_page_preview'] = true;
+    }
+
     $client->get('https://api.telegram.org/bot' . $config['tokens'][$bot] . '/sendMessage?' .
         http_build_query($queryArray)
     );

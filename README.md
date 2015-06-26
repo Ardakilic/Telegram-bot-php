@@ -4,13 +4,14 @@ This app is is a very simple Telegram PHP API for newly announced [Telegram Bots
 
 ###Features
 
-* By installing this app, you can have a working Telegram Bot within minutes!
-* This app only has two routes (which one is to register the webhook, another is to listen the webhook) in an index.php file, and a configuration file.
-* This app can handle multiple accounts from same route. Different hooks will be different route parameters. I'm already hosting two different bots with the same application.
-* There is a single `config.php` file which holds the API keys, auto reply strings and patterns.
-* Bot works on both private chats and groups.
-* The bot can either quote or send the response text directly.
-* For now, the Bots can only send a random string from an array of each predefined text patterns, else the fallback string.
+ * By installing this app, you can have a working Telegram Bot within minutes!
+ * This app only has two routes (which one is to register the webhook, another is to listen the webhook) in an `index.php` file, and a configuration file.
+ * This app can handle multiple accounts from same route. Different hooks will be different route parameters. I'm already hosting two different bots with the same application.
+ * There is a single `config.php` file which holds the API keys, auto reply strings and patterns.
+ * Bot works on both private chats and groups.
+ * The bot can either quote or send the response text directly.
+ * You can enable or disable preview links in Bots' responses.
+ * For now, the Bots can only send a random string from an array of each predefined text patterns, or else the fallback string.
 
 ###Requirements
 
@@ -20,11 +21,11 @@ This app is is a very simple Telegram PHP API for newly announced [Telegram Bots
 
 ###Installation
 
-  * Copy the app into your (virtual)server
-  * Cd into directory
-  * run `composer install`
-  * Edit the `config.php` file with your credentials, and API keys
-  * Run your app.
+ * Copy the app into your (virtual)server
+ * Cd into the app's directory
+ * Run `composer install`
+ * Edit the `config.php` file with your credentials, and API keys
+ * Run your app.
 
 ###Thanks
 

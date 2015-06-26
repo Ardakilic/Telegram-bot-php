@@ -30,6 +30,10 @@ $config = [
     //If this is set to (bool)true, Bot's reponses will be as replies
     'as_reply'	=> false,
 
+    //Enable/disable previews on the messages if there are links inside
+    //If this is set to (bool)true, Bot's reponses will preview the links
+    'preview_links' => false,
+
     'responses' => [
         //Here, each botname should have their own keys, and for each pattern they should have a value as array
         'MyFirstBot' => [
