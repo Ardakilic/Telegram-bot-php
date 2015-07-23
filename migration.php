@@ -1,16 +1,14 @@
 #!/usr/bin/env php
 <?php
 
-
 /**
  * Telegram-PHP-Bot - A Simple PHP app for Telegram Bots
  *
- * @package  Telegram-PHP-Example-Bot
- * @version  0.2
+ * @package  Telegram-Bot-PHP
+ * @version  1.0
  * @author   Arda Kilicdagi <arda@kilicdagi.com>
  * @link     https://arda.pw
  */
-
 
 require_once __DIR__ . '/bootstrap.php';
 
@@ -22,18 +20,18 @@ $header = "  _____    _                                      _           _      
                   |___/                                                                  
 -----------------------------------------------------------------------------------------";
 
-echo $header.PHP_EOL;
+echo $header . PHP_EOL;
 
 writeColor('green', 'This command installs the required migration file for reponses');
 
-echo "Are you sure you want to install the migration? Type 'yes' to continue: ";
+echo "Are you sure you want to run the migration and create the table? Type 'yes' to continue: ";
 
 //Let's read the user input
 //$handle = fopen ("php://stdin","r");
 //$userInput = fgets($handle);
 $userInput = fgets(STDIN);
-if(trim($userInput) !== 'yes'){
-    echo PHP_EOL."Bye!".PHP_EOL;
+if (trim($userInput) !== 'yes') {
+    echo PHP_EOL . "Bye!" . PHP_EOL;
     exit;
 }
 
@@ -41,41 +39,27 @@ if(trim($userInput) !== 'yes'){
 try {
 
     $db = ORM::get_db();
-    //TODO cross platform migration files, this may come from a configuration value maybe.
-    $db->exec("CREATE TABLE responses (
-          
-          id INT(10) UNSIGNED NOT NULL AUTO_INCREMENT,
-          bot_name VARCHAR(100) NOT NULL, 
-          pattern VARCHAR(100) NOT NULL UNIQUE,
-          response_text TEXT,
-          response_image VARCHAR(400),
-          as_quote ENUM('y', 'n') NOT NULL DEFAULT 'n',
-          preview_links_if_any ENUM('y', 'n') NOT NULL DEFAULT 'n',
-          
-          PRIMARY KEY (id),
-          INDEX (bot_name, pattern)
-
-        ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;");
+    $db->exec($config['connection'][$config['source']]['migration']);
 
     writeColor('green', 'Database table created successfully!');
 
-} catch(PDOException $e) {
+} catch (PDOException $e) {
 
     writeColor('red', 'An error has been occurred:');
-    writeColor('red', 'Error '.$e->getCode().': '.$e->getMessage());
+    writeColor('red', 'Error ' . $e->getCode() . ': ' . $e->getMessage());
 
 }
 
 
 //This helper will only be needed here, 
-//So until more of these are needed, I've decided to keep this here for now
+//So until more of these are needed elsewhere, I've decided to keep this here for now
 
 /**
  * Writes given message in specified color
  * Taken From Scabbla2 PHP Framework
  * https://github.com/scabbiafw/scabbia2-fw/
  *
- * @param string $uColor   color
+ * @param string $uColor color
  * @param string $uMessage message
  *
  * @return void
