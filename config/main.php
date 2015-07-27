@@ -60,10 +60,10 @@ return [
         ],
 
         //Example connection and schema for Postgres
-        'psgql' => [
+        'pgsql' => [
             'driver' => 'pgsql',
             'host' => '127.0.0.1',
-            'port' => '3306',
+            'port' => '5432',
             'database' => 'database',
             'username' => 'user',
             'password' => 'password',
