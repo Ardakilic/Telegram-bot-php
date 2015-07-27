@@ -52,6 +52,12 @@ $app->post('/hook/{route}', function ($route) use ($app, $config, $get_bot_confi
     $helper = new BotHelper($config, $route);
     $response = $helper->fetchMessage($bot_config, $response_data);
 
+    //If its markup is like a command, just ignore it.
+    //TODO this feature will be enabled in future versions.
+    if(!$response) {
+        return 'OK';
+    }
+
     //now let's reply!
     //https://core.telegram.org/bots/api#sendmessage
     $client = new GuzzleHttp\Client();

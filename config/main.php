@@ -27,6 +27,7 @@ return [
     //Database connection credentials
     'connection' => [
 
+        //Example connection and schema for MySQL
         'mysql' => [
             'driver' => 'mysql',
             'host' => '127.0.0.1',
@@ -40,7 +41,7 @@ return [
             'driver_options' => [PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES utf8'],
 
             //This will be the method that will be used in ORDER BY statement in SQL.
-            'rand_method' => 'RAND()', //E.g: RAND() for MySQL (and derivatives), NEWID() for SqlServer etc.
+            'rand_method' => 'RAND()', //E.g: RAND() for MySQL (and derivatives), RANDOM() for PSQL, NEWID() for SqlServer etc.
 
             //The migration query that creates the table when you run "php migration.php" from terminal.
             'migration' => "CREATE TABLE responses (
@@ -56,6 +57,38 @@ return [
                 INDEX (bot_name, pattern)
 
                 ) ENGINE=InnoDB DEFAULT CHARACTER SET utf8 COLLATE utf8_unicode_ci;",
+        ],
+
+        //Example connection and schema for Postgres
+        'psgql' => [
+            'driver' => 'pgsql',
+            'host' => '127.0.0.1',
+            'port' => '3306',
+            'database' => 'database',
+            'username' => 'user',
+            'password' => 'password',
+            'PDOString' => '[DRIVER]:host=[HOST];port=[PORT];dbname=[DATABASE]',
+
+            //Set the value as null if you don't want this
+            'driver_options' => null, //Postgres comes with UTF-8 as default 
+
+            //This will be the method that will be used in ORDER BY statement in SQL.
+            'rand_method' => 'RANDOM()', //E.g: RAND() for MySQL (and derivatives), RANDOM() for PSQL, NEWID() for SqlServer etc.
+
+            //The migration query that creates the table when you run "php migration.php" from terminal.
+            'migration' => "CREATE TYPE responses_response_type AS ENUM ('text','image','sticker','video','audio'); 
+                CREATE TYPE responses_as_quote AS ENUM ('y','n'); 
+                CREATE TYPE responses_preview_links_if_any AS ENUM ('y','n'); 
+                CREATE TABLE responses (
+                    id integer  NOT NULL,
+                    bot_name varchar(200) NOT NULL,
+                    pattern varchar(200) NOT NULL,
+                    response_type responses_response_type DEFAULT NULL,
+                    response_data text ,
+                    as_quote responses_as_quote NOT NULL DEFAULT 'n',
+                    preview_links_if_any responses_preview_links_if_any NOT NULL DEFAULT 'n',
+                    PRIMARY KEY (id)
+                );",
         ],
 
     ],

@@ -194,14 +194,7 @@ Class BotHelper
         $userInput = trim(str_replace('@' . $bot, '', $botRequest));
         //TODO this will be command feature, in the future
         if (stripos($userInput, '/') !== false && stripos($userInput, $bot) === false) {
-            array_push($queryArray, [
-                'name'  => 'text',
-                'contents'  => $message,
-            ]);
-            return [
-                'type'  => 'text',
-                'data'  => $queryArray,
-            ];
+            return false;
         }
 
         //First, let's check for multiple word occurences

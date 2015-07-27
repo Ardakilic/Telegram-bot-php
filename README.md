@@ -52,8 +52,8 @@ The *alias* of your bot is `bothook`, and the actual name of your bot is `myDemo
 
 (Alias is needed, because this app can handle multiple bots at once, and the alias is the key in this app that defines the bots)
 
-6. (Optional) If you will be using SQL as driver, first set the `source` key to `mysql` in `config/main.php`, then in the `mysql` sub-key in the connections update your database credentials, and lastly run `php migration.php` in the terminal and run the migration and create the table for the bots. You can also import the `example_data.sql` for MySQL as a reference and example.
-7. Create a new `myDemoBot.php` inside `config/bots` folder and fill your Telegram API token. you can use the `sampleBot.php` as a template. If you are using SQL (`mysql` etc.) as driver, token is the only key that's required in the bot.
+6. (Optional) If you will be using SQL as driver, first set the `source` key to `mysql` (for MySQL) or `pgsql` (for Postgres) in `config/main.php`, then in the `mysql` / `pgsql` sub-key in the `connections` key, update your database credentials, and lastly run `php migration.php` in the terminal and run the migration to create the table for the bots. You can also import the `example_sql_data/example_data.mysql.sql` for MySQL or `example_sql_data/example_data.mysql.sql` for Postgres as a reference and example.
+7. Create a new `myDemoBot.php` inside `config/bots` folder and fill your Telegram API token. you can use the `sampleBot.php` as a template. If you are using SQL (`mysql`, `pgsql` etc.) as driver, token is the only key that's required in the bot.
 8. If you will be using the `file` driver (no database), you also need the responses key for replies. You can refer from `config/bots/sampleBot.php`.
 9. To run the bot, you first need to set the webhook and teach Telegram where to post. To do this, navigate through http*(s)*://yoursite.com/set_webhook/**bothook**. The api then will post to http**s**://yoursite.com/hook/**bothook** (Remember, `bothook` is the alias of our bot named `myDemoBot` which we set in step 5).
 9. Add your **@myDemoBot** to your conversation or group and start messaging :smile:
@@ -74,7 +74,7 @@ Thanks
 
 TODOs
 ---------
-* Different migration schema and configuration examples for different database drivers. (Currently only for MySQL and derivatives such as MariaDB)
+* Different migration schema and configuration examples for different database drivers. (Currently only for MySQL and derivatives such as MariaDB and Postgres)
 * Better search algorithm for provided parameters
 * More complex tasks (like fetching data from 3rd party services such as Trakt etc.)
 * Commands in addition to responses, like typing `/myBotCommand parameter` in a message.
@@ -85,7 +85,11 @@ TODOs
 Changelog
 ---------
 
-#### 1.0 - release 2015-07-23
+#### 1.1.0 - release 2015-07-27
+* Postgres support added **(needs testing)**!
+* An error was fixed where you typed a command (string starting with `/`) bot(s) responded with default fallback message (Command support will be added in future versions).
+
+#### 1.0.0 - release 2015-07-23
 * SQL support - Now you can save and serve your responses from SQL. (You must use a database driver that is supported by [Idiorm](http://j4mie.github.io/idiormandparis/) (most PDO drivers should work))
 * You can now send `photo`s, `video`s, `sticker`s and `audio` files as response when using SQL. While adding a response, just set your `response_type`, and put the file name in `response_data`. An example SQL dump is in this repository as `example_data.sql`. You need to upload these files in their according folder in `assets` (E.g: if you are sending a photo named `metal.jpg`, you set the `response_type` as `image`, `response_data` as `metal.jpg` and upload the actual `metal.jpg` file into `assets/photo` sub folder).
 * When using SQL driver, you can set per-response configuration for replies. You can set them whether to be sent as quote, or previewing links if any per response.
