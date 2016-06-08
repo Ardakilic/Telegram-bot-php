@@ -23,9 +23,9 @@ Requirements
 ---------
 
 * PHP5.5+ (for Guzzle)
-* Curl for PHP5 must be enabled to use Guzzle.
-* PHP5-PDO libraries (not now, but will be needed in future versions).
-* An SSL certificate (Telegram API requires this). You can use [Cloudflare's Free Flexible SSL](https://www.cloudflare.com/ssl) which crypts the web traffic from end user to their proxies if you're using CloudFlare DNS.
+* Curl for PHP must be enabled to use Guzzle.
+* PHP-PDO libraries (not now, but will be needed in future versions).
+* An SSL certificate (Telegram API requires this). As free SSL solutions, you can use [Let's Encrypt which](https://letsencrypt.org), or [Cloudflare's Free Flexible SSL](https://www.cloudflare.com/ssl) crypts the web traffic from end user to their proxies if you're using CloudFlare DNS.
 * Telegram API key, you can get one simply with [@BotFather](https://core.telegram.org/bots#botfather) with simple commands right after creating your bot.
 
 Installation
@@ -74,7 +74,10 @@ Thanks
 
 TODOs
 ---------
+* Re-write from (almost) scratch
 * Different migration schema and configuration examples for different database drivers. (Currently only for MySQL and derivatives such as MariaDB and Postgres)
+* Inline Bots support
+* Considering Another Active Record implementation and ORM, such as Doctrine or Laravel's illuminate/database.
 * Better search algorithm for provided parameters
 * More complex tasks (like fetching data from 3rd party services such as Trakt etc.)
 * Commands in addition to responses, like typing `/myBotCommand parameter` in a message.
