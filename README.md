@@ -1,5 +1,8 @@
 # Telegram-bot-php
 
+
+## DEPRECATED: Use https://github.com/Ardakilic/Telebot2/ instead
+
 This app is a very simple Telegram PHP API for newly announced [Telegram Bots](https://telegram.org/blog/bot-revolution).
 
 ![Preview](https://i.imgur.com/juqrIZG.png)
